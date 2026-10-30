@@ -281,6 +281,57 @@ h2{
 }
 .promises p{color:var(--mute);font-size:1rem;line-height:1.65}
 
+/* shared photos */
+.photo-picker{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  width:max-content;
+  max-width:100%;
+  padding:.55rem .9rem;
+  border:1px solid rgba(241,234,220,.35);
+  border-radius:4px;
+  color:var(--thread);
+  cursor:pointer;
+}
+.photo-picker:hover{border-color:var(--turmeric);color:var(--turmeric)}
+.photo-picker input{
+  position:absolute;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  clip-path:inset(50%);
+}
+.photo-picker:has(input:focus-visible){outline:2px solid var(--turmeric);outline-offset:3px}
+.photos{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,12rem),1fr));
+  gap:.8rem;
+}
+.photos figure{margin:0;overflow:hidden;border:1px solid rgba(241,234,220,.2);border-radius:3px;background:var(--ground-2)}
+.photos img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.photos .memory-card{
+  grid-column:1/-1;
+  justify-self:center;
+  width:min(100%,24rem);
+  padding:.55rem .55rem .8rem;
+  border:0;
+  border-radius:2px;
+  background:var(--paper);
+  box-shadow:0 14px 34px rgba(4,7,25,.5);
+}
+.photos .memory-card img{aspect-ratio:4/5;object-position:center bottom}
+.memory-card figcaption{
+  padding:.55rem .25rem 0;
+  color:var(--madder-ink);
+  text-align:center;
+  font:1.2rem/1.4 var(--font-script);
+}
+.photos-empty{color:var(--mute);font-size:.95rem}
+
 /* closing */
 .close{display:grid;justify-items:center;text-align:center;gap:1rem}
 .close .big{
@@ -367,6 +418,21 @@ h2{
 </header>
 
 <main class="stack">
+  <section class="wrap sec" aria-labelledby="h-photos">
+    <p class="label">A year in pictures</p>
+    <h2 id="h-photos">Our moments</h2>
+    <label class="photo-picker">+ Add our photos
+      <input id="photo-input" type="file" accept="image/*" multiple aria-label="Add photos from your device">
+    </label>
+    <div class="photos" id="photos" aria-live="polite">
+      <figure class="memory-card">
+        <img src="709166183_951101017748715_5703366982954692944_n.jpg" alt="Moeen and Tasni together in front of a brick wall">
+        <figcaption>A moment we'll keep</figcaption>
+      </figure>
+    </div>
+    <p class="photos-empty" id="photos-empty" hidden>Choose a few favorite photos to fill this little gallery.</p>
+  </section>
+
   <section class="wrap sec" aria-labelledby="h-cloth">
     <p class="label">Our first year</p>
     <h2 id="h-cloth">365 days, stitched one by one</h2>
@@ -452,6 +518,24 @@ h2{
     frag.appendChild(el);
   }
   cloth.appendChild(frag);
+
+  var photoInput = $('#photo-input');
+  var photos = $('#photos');
+  var photoCount = photos.children.length;
+  photoInput.addEventListener('change', function () {
+    Array.prototype.forEach.call(photoInput.files, function (file) {
+      if (!file.type.startsWith('image/')) return;
+      var figure = document.createElement('figure');
+      var image = document.createElement('img');
+      image.src = URL.createObjectURL(file);
+      image.alt = 'A shared memory, photo ' + (photoCount + 1);
+      figure.appendChild(image);
+      photos.appendChild(figure);
+      photoCount++;
+    });
+    if (photoCount) $('#photos-empty').hidden = true;
+    photoInput.value = '';
+  });
 
   var calm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   if ('IntersectionObserver' in window && !calm) {
