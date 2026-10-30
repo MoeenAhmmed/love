@@ -1,0 +1,481 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Our First Year</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Galada&family=Hind+Siliguri:wght@400;500;600&family=Tiro+Bangla:ital@0;1&display=swap">
+<style>
+/* Layout: one 40rem column on indigo kantha cloth. The hero is a self-drawing stitched heart;
+   the "cloth" is 365 stitches, one per day; the letter is a sheet of paper (the first
+   anniversary is the paper anniversary) laid on the cloth. Kantha zigzag bands open and close. */
+:root{
+  --ground:#11183a;
+  --ground-2:#1a2459;
+  --thread:#f1eadc;
+  --madder:#e8596e;
+  --turmeric:#f2b84b;
+  --mute:#aab3dd;
+  --leader:rgba(241,234,220,.38);
+  --weave:rgba(255,255,255,.028);
+  --paper:#f2ede3;
+  --ink:#1f2650;
+  --madder-ink:#b3304a;
+  --font-display:"Tiro Bangla","Noto Serif Bengali",Georgia,serif;
+  --font-body:"Hind Siliguri","Noto Sans Bengali",system-ui,sans-serif;
+  --font-script:"Galada","Tiro Bangla",cursive;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{
+  background-color:var(--ground);
+  background-image:
+    repeating-linear-gradient(0deg,var(--weave) 0 1px,transparent 1px 4px),
+    repeating-linear-gradient(90deg,var(--weave) 0 1px,transparent 1px 4px);
+  color:var(--thread);
+  font-family:var(--font-body);
+  font-size:1.0625rem;
+  line-height:1.75;
+}
+h1,h2,h3,p,dl,dd,ul{margin:0}
+ul{padding:0;list-style:none}
+:focus-visible{outline:2px solid var(--turmeric);outline-offset:3px}
+
+.wrap{
+  width:100%;
+  max-width:40rem;
+  margin-inline:auto;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+}
+.band{display:block;width:100%;height:18px}
+.label{
+  font:500 .78rem/1.2 var(--font-body);
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--turmeric);
+}
+h1,h2,h3,.en-title{text-wrap:balance}
+.bn{font-family:var(--font-display);line-height:1.4}
+.en-title{
+  font-family:var(--font-display);
+  font-style:italic;
+  font-size:clamp(1.25rem,4.6vw,1.75rem);
+  line-height:1.4;
+}
+.her{color:var(--madder)}
+
+/* hero */
+.hero{
+  display:grid;
+  justify-items:center;
+  text-align:center;
+  gap:1.1rem;
+  padding-block:2.25rem 1rem;
+}
+.heart-wrap{position:relative;width:min(70vw,16.5rem);margin:.5rem auto .75rem}
+.heart-wrap::before{
+  content:"";
+  position:absolute;
+  inset:-35%;
+  background:radial-gradient(closest-side,rgba(232,89,110,.16),transparent);
+  pointer-events:none;
+}
+.heart{position:relative;display:block;width:100%;height:auto;overflow:visible}
+.st{fill:none;stroke-width:3;stroke-linecap:round;stroke-dasharray:7 7}
+.st-red{stroke:var(--madder)}
+.st-gold{stroke:var(--turmeric)}
+.m{
+  fill:none;
+  stroke:#fff;
+  stroke-width:16;
+  stroke-linecap:round;
+  stroke-dasharray:1;
+  stroke-dashoffset:1;
+  animation:draw 2.4s cubic-bezier(.6,0,.2,1) .3s forwards;
+}
+.m2{animation-delay:1.2s}
+@keyframes draw{to{stroke-dashoffset:0}}
+.heart-num{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-content:center;
+  justify-items:center;
+  padding-top:4%;
+}
+.heart-num span{
+  font-family:var(--font-display);
+  font-size:clamp(3.4rem,16vw,4.6rem);
+  line-height:1;
+  color:var(--turmeric);
+  font-variant-numeric:lining-nums;
+}
+.heart-num small{
+  font:500 .72rem/1 var(--font-body);
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  color:var(--mute);
+  margin-top:.35rem;
+  padding-left:.32em;
+}
+.hero h1{
+  font-size:clamp(2.35rem,9.5vw,4.1rem);
+  font-weight:400;
+  color:var(--thread);
+}
+.lede{max-width:30rem;color:var(--mute)}
+
+/* sections */
+.stack{
+  display:grid;
+  gap:clamp(4rem,10vw,6.5rem);
+  padding-block:clamp(2.5rem,7vw,4rem) clamp(4rem,10vw,6rem);
+}
+.sec{display:grid;gap:1.25rem;align-content:start}
+h2{
+  font-family:var(--font-display);
+  font-weight:400;
+  font-size:clamp(1.75rem,5.6vw,2.5rem);
+  line-height:1.3;
+}
+.sec>p{color:var(--mute);max-width:34rem}
+
+/* cloth of 365 stitches */
+.cloth{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(1.1rem,1fr));
+  gap:.45rem .1rem;
+  padding-block:.5rem;
+}
+.cloth i{display:block;position:relative;aspect-ratio:1}
+.cloth i::before{
+  content:"";
+  position:absolute;
+  left:14%;
+  right:14%;
+  top:50%;
+  height:3px;
+  margin-top:-1.5px;
+  border-radius:2px;
+  background:var(--c);
+  transform:rotate(-18deg);
+}
+.cloth i:nth-child(3n)::before{transform:rotate(14deg)}
+.cloth i:nth-child(5n)::before{transform:rotate(-6deg)}
+.t-white{--c:var(--thread)}
+.t-madder{--c:var(--madder)}
+.t-gold{--c:var(--turmeric)}
+.t-gold::before{height:4px;margin-top:-2px;left:6%;right:6%}
+.cloth i.last::before{height:5px;margin-top:-2.5px;left:0;right:0;box-shadow:0 0 12px 2px var(--turmeric)}
+.cloth.play i{animation:pop .5s both;animation-delay:calc(var(--i) * 5ms)}
+@keyframes pop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:none}}
+.legend{font-size:.95rem}
+
+.ledger{display:grid;gap:.35rem;margin-top:.5rem}
+.row{display:flex;align-items:baseline;gap:1rem}
+.row dt{
+  flex:1;
+  min-width:0;
+  display:flex;
+  align-items:baseline;
+  gap:.75rem;
+  order:1;
+  color:var(--mute);
+  font-size:.95rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.row dt::after{
+  content:"";
+  flex:1;
+  min-width:1rem;
+  border-bottom:2px dashed var(--leader);
+  transform:translateY(-.25em);
+}
+.row dd{
+  order:0;
+  font-family:var(--font-display);
+  font-size:clamp(1.5rem,5vw,2rem);
+  line-height:1.3;
+  font-variant-numeric:tabular-nums;
+  min-width:5.5ch;
+  text-align:right;
+}
+.row.hl dd{color:var(--turmeric)}
+.row dt{order:0}
+.row dd{order:1}
+
+/* the paper letter */
+.paper{
+  position:relative;
+  background:var(--paper);
+  color:var(--ink);
+  padding:clamp(1.6rem,5.5vw,2.8rem);
+  border-radius:3px;
+  transform:rotate(-.6deg);
+  box-shadow:0 18px 40px rgba(4,7,25,.55),0 2px 6px rgba(4,7,25,.4);
+  margin-top:.75rem;
+}
+.paper::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:36%;
+  height:16px;
+  background:linear-gradient(180deg,transparent,rgba(31,38,80,.07) 50%,transparent);
+  pointer-events:none;
+}
+.paper::after{
+  content:"";
+  position:absolute;
+  top:-13px;
+  left:50%;
+  width:96px;
+  height:26px;
+  margin-left:-48px;
+  background:rgba(242,184,75,.7);
+  transform:rotate(2deg);
+}
+.paper p{
+  font-family:var(--font-display);
+  font-size:clamp(1.05rem,3.6vw,1.2rem);
+  line-height:1.85;
+  color:var(--ink);
+  max-width:none;
+  margin-bottom:1.1em;
+}
+.paper .greet{font-style:italic;font-size:clamp(1.2rem,4.2vw,1.4rem)}
+.paper .her{color:var(--madder-ink)}
+.paper .bn-line{font-size:1.4rem;margin-top:1.4rem;margin-bottom:0}
+.signoff{
+  display:flex;
+  align-items:baseline;
+  flex-wrap:wrap;
+  gap:.2rem .7rem;
+  margin-top:.4rem;
+  font-family:var(--font-script);
+  font-size:1.9rem;
+  line-height:1.5;
+  color:var(--madder-ink);
+}
+.him:empty{display:none}
+
+/* promises */
+.promises{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));
+  gap:2.25rem 2.5rem;
+  margin-top:.5rem;
+}
+.promises li{min-width:0;padding-top:1rem;border-top:3px dashed var(--c)}
+.promises li:nth-child(3n+1){--c:var(--thread)}
+.promises li:nth-child(3n+2){--c:var(--madder)}
+.promises li:nth-child(3n){--c:var(--turmeric)}
+.promises h3{
+  font-family:var(--font-display);
+  font-weight:400;
+  font-size:1.4rem;
+  line-height:1.35;
+  margin-bottom:.3rem;
+}
+.promises p{color:var(--mute);font-size:1rem;line-height:1.65}
+
+/* closing */
+.close{display:grid;justify-items:center;text-align:center;gap:1rem}
+.close .big{
+  font-size:clamp(2.4rem,10vw,4.2rem);
+  color:var(--madder);
+  line-height:1.4;
+}
+.together{
+  display:grid;
+  justify-items:center;
+  gap:.2rem;
+  margin-top:1.25rem;
+  padding:1.1rem 1.6rem;
+  border:2px dashed var(--leader);
+  border-radius:6px;
+}
+.t-num{font-family:var(--font-display);font-size:1.9rem;line-height:1.3;color:var(--turmeric);font-variant-numeric:tabular-nums}
+.t-hms{color:var(--mute);font-variant-numeric:tabular-nums;letter-spacing:.06em}
+
+/* footer */
+.foot{display:grid;gap:1rem;justify-items:center;text-align:center;padding-block:2.25rem 2.5rem}
+.make{width:100%;max-width:26rem}
+.make summary{
+  cursor:pointer;
+  color:var(--mute);
+  font-size:.92rem;
+  text-decoration:underline dotted;
+  text-underline-offset:4px;
+  list-style:none;
+}
+.make summary::-webkit-details-marker{display:none}
+.make form{display:grid;gap:.85rem;margin-top:1rem;text-align:left}
+.make label{display:grid;gap:.3rem;font-size:.88rem;color:var(--mute)}
+.make input{
+  font:inherit;
+  color:var(--thread);
+  background:var(--ground-2);
+  border:1px solid rgba(241,234,220,.22);
+  border-radius:8px;
+  padding:.6rem .8rem;
+  min-width:0;
+}
+.make .hint{font-size:.82rem;color:var(--mute)}
+.fine{font-size:.88rem;color:var(--mute)}
+
+@media (prefers-reduced-motion:reduce){
+  .m{animation:none;stroke-dashoffset:0}
+  .cloth.play i{animation:none}
+}
+</style>
+
+<svg class="band" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id="zz-r" width="28" height="18" patternUnits="userSpaceOnUse">
+      <path d="M0 13 L7 5 L14 13 L21 5 L28 13" fill="none" style="stroke:var(--madder)" stroke-width="2" stroke-linecap="round" stroke-dasharray="5 3.5"/>
+    </pattern>
+    <pattern id="zz-g" width="28" height="18" patternUnits="userSpaceOnUse">
+      <path d="M0 13 L7 5 L14 13 L21 5 L28 13" fill="none" style="stroke:var(--turmeric)" stroke-width="2" stroke-linecap="round" stroke-dasharray="5 3.5"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="18" fill="url(#zz-r)"/>
+</svg>
+
+<header class="hero wrap">
+  <p class="label" id="eyebrow">Moeen &amp; Tasni</p>
+  <div class="heart-wrap">
+    <svg class="heart" viewBox="0 0 200 180" aria-hidden="true" focusable="false">
+      <defs>
+        <mask id="reveal" maskUnits="userSpaceOnUse" x="-20" y="-20" width="240" height="220">
+          <path class="m m1" pathLength="1" d="M100 165 C40 120 10 85 10 55 C10 28 32 12 55 12 C75 12 92 24 100 42 C108 24 125 12 145 12 C168 12 190 28 190 55 C190 85 160 120 100 165 Z"/>
+          <path class="m m2" pathLength="1" transform="translate(22 21) scale(.78)" d="M100 165 C40 120 10 85 10 55 C10 28 32 12 55 12 C75 12 92 24 100 42 C108 24 125 12 145 12 C168 12 190 28 190 55 C190 85 160 120 100 165 Z"/>
+        </mask>
+      </defs>
+      <g mask="url(#reveal)">
+        <path class="st st-red" d="M100 165 C40 120 10 85 10 55 C10 28 32 12 55 12 C75 12 92 24 100 42 C108 24 125 12 145 12 C168 12 190 28 190 55 C190 85 160 120 100 165 Z"/>
+        <path class="st st-gold" transform="translate(22 21) scale(.78)" d="M100 165 C40 120 10 85 10 55 C10 28 32 12 55 12 C75 12 92 24 100 42 C108 24 125 12 145 12 C168 12 190 28 190 55 C190 85 160 120 100 165 Z"/>
+      </g>
+    </svg>
+    <div class="heart-num" aria-hidden="true"><span>1</span><small>year</small></div>
+  </div>
+  <h1 class="bn" lang="bn">শুভ প্রথম বিবাহবার্ষিকী</h1>
+  <p class="en-title">Happy first anniversary, <span class="her">Tasni</span></p>
+  <p class="lede">A year ago we promised each other forever. A year in, I would say every word again.</p>
+</header>
+
+<main class="stack">
+  <section class="wrap sec" aria-labelledby="h-cloth">
+    <p class="label">Our first year</p>
+    <h2 id="h-cloth">365 days, stitched one by one</h2>
+    <div class="cloth" id="cloth" role="img" aria-label="365 small stitches, one for each day of our first year, with a gold stitch at the end of each month"></div>
+    <p class="legend">Each stitch is a day. Gold marks the end of a month. The last one glows: day 365, and the start of year two.</p>
+    <dl class="ledger">
+      <div class="row"><dt>months</dt><dd>12</dd></div>
+      <div class="row"><dt>weeks</dt><dd>52</dd></div>
+      <div class="row hl"><dt>days</dt><dd>365</dd></div>
+      <div class="row"><dt>hours</dt><dd>8,760</dd></div>
+      <div class="row"><dt>minutes</dt><dd>525,600</dd></div>
+    </dl>
+  </section>
+
+  <section class="wrap sec" aria-labelledby="h-letter">
+    <p class="label">The first anniversary is paper</p>
+    <h2 id="h-letter">I wrote you a letter</h2>
+    <p>Tradition gives the first anniversary to paper, and the modern list gives it to clocks. I am giving you both: a letter, and every hour of the year ahead.</p>
+    <article class="paper">
+      <p class="greet">Dear <span class="her">Tasni</span>,</p>
+      <p>One year ago I got to call you my wife. I thought I understood what that would mean. I didn't. I didn't know that a cup of tea, a long ride home, or a tired evening could become the best part of my day, just because you were there.</p>
+      <p>Thank you for your patience on my busiest days, for your kindness when I am not at my best, and for believing in me when I forget to. You make me better without ever asking me to be someone else.</p>
+      <p>I don't know everything the second year will bring. I know I want to meet all of it with you, the easy days and the hard ones, the loud laughs and the quiet evenings.</p>
+      <p>I love you more today than I did on our wedding day. Tomorrow, I will say the same.</p>
+      <p class="bn-line" lang="bn">ভালোবাসি তোমাকে।</p>
+      <p class="signoff"><span lang="bn">তোমারই</span><span class="him">Moeen</span></p>
+    </article>
+  </section>
+
+  <section class="wrap sec" aria-labelledby="h-promises">
+    <p class="label">Looking ahead</p>
+    <h2 id="h-promises">Year two, I promise</h2>
+    <ul class="promises">
+      <li><h3>To choose you every day</h3><p>On the easy days and the hard ones, out loud and in the small things.</p></li>
+      <li><h3>To listen first</h3><p>Before I fix, advise or explain, I will hear all of it.</p></li>
+      <li><h3>To protect our slow time</h3><p>Tea, long talks, a walk with no destination. Work can wait.</p></li>
+      <li><h3>To cheer louder</h3><p>Your goals are my goals. I will be the first one clapping.</p></li>
+      <li><h3>To laugh every day</h3><p>Mostly with you, and sometimes at myself, so you don't have to.</p></li>
+      <li><h3>To come home to you</h3><p>In every sense of the word, for every year after this one.</p></li>
+    </ul>
+  </section>
+
+  <section class="wrap close" aria-label="Closing">
+    <p class="bn big" lang="bn">ভালোবাসি তোমাকে</p>
+    <p class="en-title">Here's to year two, and every year after.</p>
+    <p class="together" id="together" hidden>
+      <span class="label">Together since 31 October 2025</span>
+      <span class="t-num"><b id="t-days" style="font-weight:400">0</b> days</span>
+      <span class="t-hms" id="t-hms">00h 00m 00s</span>
+    </p>
+  </section>
+</main>
+
+<svg class="band" aria-hidden="true" focusable="false"><rect width="100%" height="18" fill="url(#zz-g)"/></svg>
+
+<footer class="foot wrap">
+  <p class="fine">Made with love, one stitch at a time.</p>
+</footer>
+
+<script>
+(function () {
+  var $ = function (s) { return document.querySelector(s); };
+
+  /* 365 stitches: gold at each month's end (12 of them), thread colours elsewhere */
+  var cloth = $('#cloth');
+  var marks = {};
+  for (var k = 1; k <= 12; k++) marks[Math.floor(k * 365 / 12)] = true;
+  var seed = 7;
+  function rnd() {
+    seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+    var t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  }
+  var frag = document.createDocumentFragment();
+  for (var d = 1; d <= 365; d++) {
+    var el = document.createElement('i');
+    var cls = marks[d] ? 't-gold' : (rnd() < 0.58 ? 't-white' : 't-madder');
+    if (d === 365) cls += ' last';
+    el.className = cls;
+    el.style.setProperty('--i', d);
+    el.title = 'Day ' + d;
+    frag.appendChild(el);
+  }
+  cloth.appendChild(frag);
+
+  var calm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if ('IntersectionObserver' in window && !calm) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { cloth.classList.add('play'); io.disconnect(); }
+      });
+    }, { threshold: 0.3 });
+    io.observe(cloth);
+  }
+
+  /* time together since 31 October 2025 */
+  var WED = new Date('2025-10-31T00:00:00');
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function tick() {
+    var s = Math.floor((Date.now() - WED.getTime()) / 1000);
+    if (s < 0) return;
+    $('#t-days').textContent = Math.floor(s / 86400).toLocaleString('en-US');
+    $('#t-hms').textContent = pad(Math.floor(s % 86400 / 3600)) + 'h ' + pad(Math.floor(s % 3600 / 60)) + 'm ' + pad(s % 60) + 's';
+    $('#together').hidden = false;
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>
+
+</body></html>
