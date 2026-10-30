@@ -281,62 +281,56 @@ h2{
 }
 .promises p{color:var(--mute);font-size:1rem;line-height:1.65}
 
-/* shared photos */
-.photo-picker{
+/* the rotating photo keepsake */
+.orbit-stage{
   position:relative;
-  display:inline-flex;
-  align-items:center;
-  gap:.5rem;
-  width:max-content;
-  max-width:100%;
-  padding:.55rem .9rem;
-  border:1px solid rgba(241,234,220,.35);
-  border-radius:4px;
-  color:var(--thread);
-  cursor:pointer;
-}
-.photo-picker:hover{border-color:var(--turmeric);color:var(--turmeric)}
-.photo-picker input{
-  position:absolute;
-  width:1px;
-  height:1px;
+  width:100%;
+  max-width:42rem;
+  aspect-ratio:1.42;
+  margin-inline:auto;
   overflow:hidden;
-  clip:rect(0,0,0,0);
-  white-space:nowrap;
-  clip-path:inset(50%);
+  border:1px solid rgba(241,234,220,.16);
+  border-radius:4px;
+  background:
+    radial-gradient(ellipse at 50% 68%,rgba(232,89,110,.14),transparent 54%),
+    linear-gradient(155deg,rgba(26,36,89,.92),rgba(17,24,58,.92));
+  box-shadow:inset 0 0 48px rgba(3,6,24,.35),0 16px 38px rgba(4,7,25,.35);
 }
-.photo-picker:has(input:focus-visible){outline:2px solid var(--turmeric);outline-offset:3px}
-.photos{
+.orbit-stage canvas{display:block;width:100%;height:100%;touch-action:pan-y;cursor:grab}
+.orbit-stage canvas:active{cursor:grabbing}
+.orbit-stage:focus-within{outline:2px solid var(--turmeric);outline-offset:4px}
+.orbit-fallback{
+  position:absolute;
+  inset:0;
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
-  align-items:start;
-  gap:.85rem;
+  align-content:center;
+  gap:.5rem;
+  padding:.8rem;
+  overflow:auto;
 }
-.photos figure{margin:0;overflow:hidden;border:1px solid rgba(241,234,220,.2);border-radius:3px;background:var(--ground-2)}
-.photos img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover}
-.photos .memory-card{
-  grid-column:1/-1;
-  justify-self:center;
-  width:min(100%,32rem);
-  padding:.55rem .55rem .8rem;
-  border:0;
-  border-radius:2px;
-  background:var(--paper);
-  box-shadow:0 14px 34px rgba(4,7,25,.5);
+.orbit-fallback figure{min-width:0;margin:0;padding:.25rem .25rem .45rem;background:var(--paper);box-shadow:0 5px 16px rgba(4,7,25,.4)}
+.orbit-fallback figure:first-child{grid-column:1/-1;width:min(78%,25rem);justify-self:center}
+.orbit-fallback img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover}
+.orbit-fallback figure:first-child img{aspect-ratio:16/10;object-position:center 58%}
+.orbit-fallback figcaption{padding:.25rem .1rem 0;color:var(--madder-ink);text-align:center;font:1rem/1.3 var(--font-script)}
+.orbit-caption{min-height:1.5em;color:var(--thread);text-align:center;font:1.2rem/1.4 var(--font-script)}
+.orbit-controls{display:flex;align-items:center;justify-content:center;gap:1rem}
+.orbit-controls button{
+  display:grid;
+  place-items:center;
+  width:2.8rem;
+  height:2.8rem;
+  padding:0;
+  border:1px solid rgba(241,234,220,.35);
+  border-radius:50%;
+  background:var(--ground-2);
+  color:var(--thread);
+  font:inherit;
+  cursor:pointer;
 }
-.photos .memory-card img{aspect-ratio:16/10;object-position:center 58%}
-.photos .memory-tile{padding:.35rem .35rem .6rem;border-color:rgba(241,234,220,.24)}
-.photos .memory-tile img{border-radius:1px}
-.photos .memory-tile.memory-wide img{aspect-ratio:4/3}
-.photos .memory-tile.memory-brick img{object-position:center 82%}
-.memory-card figcaption{
-  padding:.55rem .25rem 0;
-  color:var(--madder-ink);
-  text-align:center;
-  font:1.2rem/1.4 var(--font-script);
-}
-.memory-tile figcaption{padding:.3rem .2rem 0;color:var(--thread);text-align:center;font-size:.88rem;line-height:1.4}
-.photos-empty{color:var(--mute);font-size:.95rem}
+.orbit-controls button:hover{border-color:var(--turmeric);color:var(--turmeric)}
+.orbit-controls button:nth-child(2){width:auto;min-width:6.5rem;padding-inline:.9rem;border-radius:4px;font-size:.9rem}
 
 /* closing */
 .close{display:grid;justify-items:center;text-align:center;gap:1rem}
@@ -427,32 +421,21 @@ h2{
   <section class="wrap sec" aria-labelledby="h-photos">
     <p class="label">A year in pictures</p>
     <h2 id="h-photos">Our moments</h2>
-    <label class="photo-picker">+ Add our photos
-      <input id="photo-input" type="file" accept="image/*" multiple aria-label="Add photos from your device">
-    </label>
-    <div class="photos" id="photos" aria-live="polite">
-      <figure class="memory-card">
-        <img src="709577413_951100317748785_5457756802628651239_n.jpg" alt="Moeen and Tasni together during their wedding ceremony" fetchpriority="high">
-        <figcaption>The day we promised forever</figcaption>
-      </figure>
-      <figure class="memory-tile">
-        <img src="709578611_951100041082146_1666350069174776059_n.jpg" alt="Moeen and Tasni dressed for their wedding" loading="lazy">
-        <figcaption>All dressed up, together</figcaption>
-      </figure>
-      <figure class="memory-tile">
-        <img src="709735393_951101514415332_6277213618777734295_n.jpg" alt="A close selfie of Moeen and Tasni smiling together" loading="lazy">
-        <figcaption>Just us</figcaption>
-      </figure>
-      <figure class="memory-tile memory-brick">
-        <img src="709166183_951101017748715_5703366982954692944_n.jpg" alt="Tasni and Moeen sharing a moment by a brick wall" loading="lazy">
-        <figcaption>A little moment from our story</figcaption>
-      </figure>
-      <figure class="memory-tile memory-wide">
-        <img src="709647095_951100841082066_3699888899939998184_n.jpg" alt="Moeen and Tasni sitting together beneath a wedding veil" loading="lazy">
-        <figcaption>Together under the wedding veil</figcaption>
-      </figure>
+    <div class="orbit-stage" id="orbit-stage">
+      <div class="orbit-fallback" id="orbit-fallback">
+        <figure><img src="709577413_951100317748785_5457756802628651239_n.jpg" alt="Moeen and Tasni together during their wedding ceremony"><figcaption>The day we promised forever</figcaption></figure>
+        <figure><img src="709578611_951100041082146_1666350069174776059_n.jpg" alt="Moeen and Tasni dressed for their wedding"><figcaption>All dressed up, together</figcaption></figure>
+        <figure><img src="709735393_951101514415332_6277213618777734295_n.jpg" alt="A close selfie of Moeen and Tasni smiling together"><figcaption>Just us</figcaption></figure>
+        <figure><img src="709166183_951101017748715_5703366982954692944_n.jpg" alt="Tasni and Moeen sharing a moment by a brick wall"><figcaption>A little moment from our story</figcaption></figure>
+        <figure><img src="709647095_951100841082066_3699888899939998184_n.jpg" alt="Moeen and Tasni sitting together beneath a wedding veil"><figcaption>Together under the wedding veil</figcaption></figure>
+      </div>
     </div>
-    <p class="photos-empty" id="photos-empty" hidden>Choose a few favorite photos to fill this little gallery.</p>
+    <p class="orbit-caption" id="orbit-caption" aria-live="polite">The day we promised forever</p>
+    <div class="orbit-controls" id="orbit-controls" hidden>
+      <button type="button" id="photo-previous" aria-label="Show previous photo" title="Previous photo">&#8592;</button>
+      <button type="button" id="photo-toggle" aria-label="Pause photo rotation" aria-pressed="true">Pause</button>
+      <button type="button" id="photo-next" aria-label="Show next photo" title="Next photo">&#8594;</button>
+    </div>
   </section>
 
   <section class="wrap sec" aria-labelledby="h-cloth">
@@ -541,24 +524,6 @@ h2{
   }
   cloth.appendChild(frag);
 
-  var photoInput = $('#photo-input');
-  var photos = $('#photos');
-  var photoCount = photos.children.length;
-  photoInput.addEventListener('change', function () {
-    Array.prototype.forEach.call(photoInput.files, function (file) {
-      if (!file.type.startsWith('image/')) return;
-      var figure = document.createElement('figure');
-      var image = document.createElement('img');
-      image.src = URL.createObjectURL(file);
-      image.alt = 'A shared memory, photo ' + (photoCount + 1);
-      figure.appendChild(image);
-      photos.appendChild(figure);
-      photoCount++;
-    });
-    if (photoCount) $('#photos-empty').hidden = true;
-    photoInput.value = '';
-  });
-
   var calm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   if ('IntersectionObserver' in window && !calm) {
     var io = new IntersectionObserver(function (entries) {
@@ -582,6 +547,191 @@ h2{
   tick();
   setInterval(tick, 1000);
 })();
+</script>
+
+<script type="module">
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js';
+
+const stage = document.querySelector('#orbit-stage');
+const fallback = document.querySelector('#orbit-fallback');
+const controls = document.querySelector('#orbit-controls');
+const caption = document.querySelector('#orbit-caption');
+const photos = [
+  { src: '709577413_951100317748785_5457756802628651239_n.jpg', alt: 'Moeen and Tasni together during their wedding ceremony', caption: 'The day we promised forever', cropY: .58 },
+  { src: '709578611_951100041082146_1666350069174776059_n.jpg', alt: 'Moeen and Tasni dressed for their wedding', caption: 'All dressed up, together', cropY: .5 },
+  { src: '709735393_951101514415332_6277213618777734295_n.jpg', alt: 'A close selfie of Moeen and Tasni smiling together', caption: 'Just us', cropY: .5 },
+  { src: '709166183_951101017748715_5703366982954692944_n.jpg', alt: 'Tasni and Moeen sharing a moment by a brick wall', caption: 'A little moment from our story', cropY: .82 },
+  { src: '709647095_951100841082066_3699888899939998184_n.jpg', alt: 'Moeen and Tasni sitting together beneath a wedding veil', caption: 'Together under the wedding veil', cropY: .5 }
+];
+
+try {
+  const loader = new THREE.TextureLoader();
+  const textures = await Promise.all(photos.map((photo) => new Promise((resolve, reject) => {
+    loader.load(photo.src, resolve, undefined, reject);
+  })));
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(35, 1, .1, 50);
+  camera.position.set(0, .45, 8);
+  camera.lookAt(0, 0, 0);
+
+  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.domElement.setAttribute('role', 'img');
+  renderer.domElement.setAttribute('aria-label', photos[0].alt);
+  renderer.domElement.setAttribute('tabindex', '0');
+  renderer.domElement.setAttribute('aria-keyshortcuts', 'ArrowLeft ArrowRight');
+  stage.appendChild(renderer.domElement);
+
+  const carousel = new THREE.Group();
+  scene.add(carousel);
+  const ring = new THREE.Mesh(
+    new THREE.TorusGeometry(2.65, .012, 5, 96),
+    new THREE.MeshBasicMaterial({ color: 0xf2b84b, transparent: true, opacity: .48 })
+  );
+  ring.rotation.x = Math.PI / 2;
+  ring.position.y = -.05;
+  scene.add(ring);
+
+  const reflections = new THREE.Group();
+  reflections.position.y = -1.72;
+  reflections.scale.y = -1;
+  scene.add(reflections);
+
+  photos.forEach((photo, index) => {
+    const texture = textures[index];
+    texture.colorSpace = THREE.SRGBColorSpace;
+    texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
+    const image = texture.image;
+    const targetAspect = 2.28 / 3.05;
+    const imageAspect = image.width / image.height;
+    if (imageAspect > targetAspect) {
+      texture.repeat.x = targetAspect / imageAspect;
+      texture.offset.x = (1 - texture.repeat.x) / 2;
+    } else {
+      texture.repeat.y = imageAspect / targetAspect;
+      texture.offset.y = (1 - texture.repeat.y) * (1 - photo.cropY);
+    }
+    texture.needsUpdate = true;
+
+    const card = new THREE.Group();
+    const frame = new THREE.Mesh(
+      new THREE.PlaneGeometry(2.5, 3.27),
+      new THREE.MeshBasicMaterial({ color: 0xf2b84b, side: THREE.DoubleSide })
+    );
+    frame.position.z = -.025;
+    card.add(frame);
+    card.add(new THREE.Mesh(
+      new THREE.PlaneGeometry(2.28, 3.05),
+      new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide, toneMapped: false })
+    ));
+
+    const angle = index * Math.PI * 2 / photos.length;
+    card.position.set(Math.sin(angle) * 2.48, 0, Math.cos(angle) * 2.48);
+    card.rotation.y = angle;
+    carousel.add(card);
+
+    const reflection = card.clone();
+    reflection.position.y = 0;
+    reflection.traverse((part) => {
+      if (part.isMesh) {
+        part.material = part.material.clone();
+        part.material.transparent = true;
+        part.material.opacity = .16;
+        part.material.depthWrite = false;
+      }
+    });
+    reflections.add(reflection);
+  });
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let autoRotate = !reducedMotion;
+  let rotation = 0;
+  let previousTime = 0;
+  let activeIndex = -1;
+  const step = Math.PI * 2 / photos.length;
+  const toggle = document.querySelector('#photo-toggle');
+  toggle.textContent = autoRotate ? 'Pause' : 'Play';
+  toggle.setAttribute('aria-label', autoRotate ? 'Pause photo rotation' : 'Resume photo rotation');
+  toggle.setAttribute('aria-pressed', String(autoRotate));
+
+  function showPhoto(index) {
+    activeIndex = (index + photos.length) % photos.length;
+    caption.textContent = photos[activeIndex].caption;
+    renderer.domElement.setAttribute('aria-label', photos[activeIndex].alt);
+  }
+
+  function move(direction) {
+    rotation -= direction * step;
+    carousel.rotation.y = rotation;
+    reflections.rotation.y = rotation;
+    showPhoto(Math.round(-rotation / step));
+  }
+
+  document.querySelector('#photo-previous').addEventListener('click', () => move(-1));
+  document.querySelector('#photo-next').addEventListener('click', () => move(1));
+  toggle.addEventListener('click', () => {
+    autoRotate = !autoRotate;
+    toggle.textContent = autoRotate ? 'Pause' : 'Play';
+    toggle.setAttribute('aria-label', autoRotate ? 'Pause photo rotation' : 'Resume photo rotation');
+    toggle.setAttribute('aria-pressed', String(autoRotate));
+  });
+
+  renderer.domElement.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+      event.preventDefault();
+      move(event.key === 'ArrowRight' ? 1 : -1);
+    }
+  });
+
+  let dragX = null;
+  renderer.domElement.addEventListener('pointerdown', (event) => {
+    dragX = event.clientX;
+    renderer.domElement.setPointerCapture(event.pointerId);
+  });
+  renderer.domElement.addEventListener('pointermove', (event) => {
+    if (dragX === null) return;
+    const delta = event.clientX - dragX;
+    dragX = event.clientX;
+    rotation += delta * .008;
+    carousel.rotation.y = rotation;
+    reflections.rotation.y = rotation;
+    showPhoto(Math.round(-rotation / step));
+  });
+  renderer.domElement.addEventListener('pointerup', () => { dragX = null; });
+  renderer.domElement.addEventListener('pointercancel', () => { dragX = null; });
+
+  function resize() {
+    const bounds = stage.getBoundingClientRect();
+    if (!bounds.width || !bounds.height) return;
+    camera.aspect = bounds.width / bounds.height;
+    camera.updateProjectionMatrix();
+    renderer.setSize(bounds.width, bounds.height, false);
+  }
+  new ResizeObserver(resize).observe(stage);
+  resize();
+  showPhoto(0);
+  fallback.hidden = true;
+  controls.hidden = false;
+
+  function animate(time) {
+    requestAnimationFrame(animate);
+    if (document.hidden) { previousTime = time; return; }
+    const delta = previousTime ? Math.min((time - previousTime) / 1000, .05) : 0;
+    previousTime = time;
+    if (autoRotate) {
+      rotation += delta * .16;
+      carousel.rotation.y = rotation;
+      reflections.rotation.y = rotation;
+      const nextIndex = Math.round(-rotation / step);
+      if (nextIndex !== activeIndex) showPhoto(nextIndex);
+    }
+    renderer.render(scene, camera);
+  }
+  requestAnimationFrame(animate);
+} catch (error) {
+  console.warn('3D photo gallery unavailable; showing the photo gallery fallback.', error);
+}
 </script>
 
 </body></html>
