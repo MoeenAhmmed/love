@@ -308,28 +308,34 @@ h2{
 .photo-picker:has(input:focus-visible){outline:2px solid var(--turmeric);outline-offset:3px}
 .photos{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(min(100%,12rem),1fr));
-  gap:.8rem;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  align-items:start;
+  gap:.85rem;
 }
 .photos figure{margin:0;overflow:hidden;border:1px solid rgba(241,234,220,.2);border-radius:3px;background:var(--ground-2)}
-.photos img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.photos img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover}
 .photos .memory-card{
   grid-column:1/-1;
   justify-self:center;
-  width:min(100%,24rem);
+  width:min(100%,32rem);
   padding:.55rem .55rem .8rem;
   border:0;
   border-radius:2px;
   background:var(--paper);
   box-shadow:0 14px 34px rgba(4,7,25,.5);
 }
-.photos .memory-card img{aspect-ratio:4/5;object-position:center bottom}
+.photos .memory-card img{aspect-ratio:16/10;object-position:center 58%}
+.photos .memory-tile{padding:.35rem .35rem .6rem;border-color:rgba(241,234,220,.24)}
+.photos .memory-tile img{border-radius:1px}
+.photos .memory-tile.memory-wide img{aspect-ratio:4/3}
+.photos .memory-tile.memory-brick img{object-position:center 82%}
 .memory-card figcaption{
   padding:.55rem .25rem 0;
   color:var(--madder-ink);
   text-align:center;
   font:1.2rem/1.4 var(--font-script);
 }
+.memory-tile figcaption{padding:.3rem .2rem 0;color:var(--thread);text-align:center;font-size:.88rem;line-height:1.4}
 .photos-empty{color:var(--mute);font-size:.95rem}
 
 /* closing */
@@ -426,8 +432,24 @@ h2{
     </label>
     <div class="photos" id="photos" aria-live="polite">
       <figure class="memory-card">
-        <img src="709166183_951101017748715_5703366982954692944_n.jpg" alt="Moeen and Tasni together in front of a brick wall">
-        <figcaption>A moment we'll keep</figcaption>
+        <img src="709577413_951100317748785_5457756802628651239_n.jpg" alt="Moeen and Tasni together during their wedding ceremony" fetchpriority="high">
+        <figcaption>The day we promised forever</figcaption>
+      </figure>
+      <figure class="memory-tile">
+        <img src="709578611_951100041082146_1666350069174776059_n.jpg" alt="Moeen and Tasni dressed for their wedding" loading="lazy">
+        <figcaption>All dressed up, together</figcaption>
+      </figure>
+      <figure class="memory-tile">
+        <img src="709735393_951101514415332_6277213618777734295_n.jpg" alt="A close selfie of Moeen and Tasni smiling together" loading="lazy">
+        <figcaption>Just us</figcaption>
+      </figure>
+      <figure class="memory-tile memory-brick">
+        <img src="709166183_951101017748715_5703366982954692944_n.jpg" alt="Tasni and Moeen sharing a moment by a brick wall" loading="lazy">
+        <figcaption>A little moment from our story</figcaption>
+      </figure>
+      <figure class="memory-tile memory-wide">
+        <img src="709647095_951100841082066_3699888899939998184_n.jpg" alt="Moeen and Tasni sitting together beneath a wedding veil" loading="lazy">
+        <figcaption>Together under the wedding veil</figcaption>
       </figure>
     </div>
     <p class="photos-empty" id="photos-empty" hidden>Choose a few favorite photos to fill this little gallery.</p>
